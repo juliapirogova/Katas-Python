@@ -36,6 +36,8 @@ Un entorno de desarrollo como VS Code, por ejemplo
 
 🚀 Ejecución
 
+Todas las katas estan en el archivo kataspythonproyecto.py y se pueden ejecutar el archivo complete en VSCode. 
+
 🧠 Buenas prácticas aplicadas
 
 ☑️Uso de nombres descriptivos para variables, funciones y clases.
@@ -43,7 +45,7 @@ Un entorno de desarrollo como VS Code, por ejemplo
 ☑️Estructura modular del código para facilitar la comprensión.
 ☑️Validación de entradas y manejo de errores para evitar fallos de ejecución.
 
- Autor
+ 😎 Autor
  
 [Julia Pirogova] Este proyecto me ha supuesto un verdadero reto, ya que son mis primeros pasos en este área, pero también me ha ayudado enormemente para crecer y aprender.  Para cualquier duda o pregunta, no dudes en contactar conmigo [https://github.com/juliapirogova]
 Proyecto realizado para el módulo Python — Lógica: Katas de Python.
