@@ -45,5 +45,5 @@ Un entorno de desarrollo como VS Code, por ejemplo
 
  Autor
  
-[Julia Pirogova] 
+[Julia Pirogova] Este proyecto me ha supuesto un verdadero reto, ya que son mis primeros pasos en este área, pero también me ha ayudado enormemente para crecer y aprender.  Para cualquier duda o pregunta, no dudes en contactar conmigo [https://github.com/juliapirogova]
 Proyecto realizado para el módulo Python — Lógica: Katas de Python.
