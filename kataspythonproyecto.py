@@ -51,9 +51,9 @@ def buscar_palabra (lista_palabras, palabra):
         _list: _devuelve una lista nueva con palabras que contengan la palabra base
     """
     lista_nueva = []
-    for palabra in lista_palabras:
-        if palabra_base in palabra:
-            lista_nueva.append (palabra)
+    for elemento in lista_palabras:
+        if palabra in elemento:
+            lista_nueva.append (elemento)
     return lista_nueva
 
 lista_ejecutar = ["loca", "manzana", "roca", "palabra", "fresa", "provoca"]
@@ -450,7 +450,7 @@ anagramas(palabra1, palabra2)
 #31. función que solicita ingresar una lista de nombres y luego solicite un nombre para buscar. Si está, se imprime fue encontrado, si no, excepción.
 try:
     nombres = input("Dame nombres separados por comas")
-    lista_nombres= [nombre.strip().lower for nombre in nombres.split(",") if nombre.strip()]  # limpiamos espacios y lo hacemos todo en minuscula
+    lista_nombres= [nombre.strip().lower() for nombre in nombres.split(",") if nombre.strip()]  # limpiamos espacios y lo hacemos todo en minuscula
     nombre_a_buscar = input("Escribe un nombre para buscar en la lista").strip().lower()
     if nombre_a_buscar in lista_nombres:
        print (f'el nombre "{nombre_a_buscar}" fue encontrado en la lista')
@@ -464,7 +464,7 @@ except ValueError:
 def empleado_puesto(nombre, lista):
     for empleado in lista: #porque tenemos una lista de diccionarios
         if empleado ["nombre"] == nombre:
-            return f"El empleado '{empleado ["nombre"]}' trabaja como '{empleado ["posicion"]}' "
+            return f"El empleado '{empleado ['nombre']}' trabaja como '{empleado ['posicion']}' "
             
     return f"La persona {nombre} no trabaja en esta empresa"
 lista_empleados = [
@@ -667,7 +667,7 @@ def area_figuras(opcion, tupla_datos):
         area = (base * altura)/2
         return area
     
-area_figuras("circulo", (5))
+area_figuras("circulo", (5,)) #tupla con un unico elemento
 
 #41. Tienda online
 
