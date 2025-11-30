@@ -120,21 +120,21 @@ def factorial(x):
 
 #7. Funcion que convierta una lista de tuplas a una lista de str usando funcion map ()
 
-def tupla_a_str (tupla):
-    """_Es una funcion que convierta una tupla a un str
+def tuplas_a_strings(lista_tuplas):
+    """es una funcion que coje una lista de tuplas y los convierte en str
 
     Args:
-        tupla (_tuple_): _una tupla con la que vamos a trabajar
+        lista_tuplas (_list_): _lista de tuplas
 
     Returns:
-        _str_: devuelve un str
+        _list_: _lista de str
     """
-    resultado = str(tupla)
-    return resultado
+    return list(map(lambda x: str(x), lista_tuplas))
 
-tupla = ("mama", "yo", "te", "quiero", "mucho")
-prueba = list (map (tupla_a_str, tupla)) #la funciion map() nos devuelve una lista de str a partir de una tupla
-prueba
+tuplas = [("Vecna", "Will"), (11, 8, 1), ("Stranger", "Things")]
+resultado = tuplas_a_strings(tuplas)
+resultado
+
 #8. Programa que pide 2 numeros y los divide. manejar el error de valor no numerico o 0.Division exitosa o no
 
 try:
@@ -205,7 +205,29 @@ except ValueError:
  print (f'Debes introducir una edad valida')
 
 #12. funcion que recibe una frase y devuelve una lista con longitud de cada palabra. map()
+import re
 
+def longitud_palabra(frase):
+    """_Es una funcion que recibe una frase, la divide en palabras, elimina los signos de puntuacion y calcula la longitud de palabras.
+
+    Args:
+        frase (cadena de str): _una frase para calcular la longitud de palabras
+
+    Returns:
+        _list: _una lista con la longitud de cada palabra de la frase dada
+    """
+
+    frase_limpia = re.sub(r'[^\w\s]', '', frase) #todo lo que no es palabra o número 
+    
+    palabras = frase_limpia.split()
+    return list(map(len, palabras))
+
+
+frase_evaluar = "Hola. Hoy es un dia perfecto para ver Stranger Things."
+resultado = longitud_palabra(frase_evaluar)
+resultado
+
+# Mi anterior version con importacion innecesaria
 import string
 def longitud_palabra (frase):
     """_Es una funcion que recibe una frase, la divide en palabras, elimina los signos de puntuacion y calcula la longitud de palabras.
@@ -299,6 +321,22 @@ palabras_mas_largas(frase, 5)
 #17. Funcion que toma una lista de digitos y devuelve el numero correspondiente. usar reduce()
 from functools import reduce #tuve que importar reduce() antes de usarlo para mis katas
 
+#version corregida donde concatenamos los numeros de la lista como str, y al final lo volvemos numero de vuelta
+def digitos_a_numeros(lista):
+     """_Es una funcion que convierte digitos en un numero.
+
+    Args:
+        lista (_list): _lista de digitos
+
+    Returns:
+        _int_: _un numero """
+     numero_str = reduce(lambda x, y: x + str(y), map(str, lista))  
+     return int(numero_str)
+
+lista = [3,6,8]
+digitos_a_numero(lista)
+
+#version antigua mas avanzada( aunque me parece mas elegante)
 def digitos_a_numero (lista):
     """_Es una funcion que convierte digitos en un numero.
 
@@ -572,10 +610,10 @@ texto = "Contenía una flauta de madera toscamente trabajada. Era evidente que H
 contar_palabras(texto)
 
 import re
-def reemplazar_palabra(texto, palabra_original, palabra_nueva):
+def reemplazar_palabra(palabra_original, palabra_nueva, texto):
     palabra_a_cambiar = r'\b' + re.escape(palabra_original) + r'\b'
     
-    resultado = re.sub (texto, palabra_a_cambiar, palabra_nueva) #he buscado este metodo porque antes lo habia hecho con replace(), pero no respetaba los limites de la palabra y me cambiaba partes de otras parabras
+    resultado = re.sub (palabra_a_cambiar, palabra_nueva, texto) #he buscado este metodo porque antes lo habia hecho con replace(), pero no respetaba los limites de la palabra y me cambiaba partes de otras parabras
     return resultado
 
 reemplazar_palabra("de", "lechuza", texto)
@@ -597,12 +635,12 @@ def procesar_texto(opcion, texto, *args):
     elif opcion == "reemplazar":
         return reemplazar_palabra( texto, *args)
     elif opcion == "eliminar":
-        return eliminar_palabra( texto, *args)
+        return eliminar_palabra( *args, texto)
     else:
         return "Esta opcion no existe. Usa: 'contar', 'reemplazar' o 'eliminar'."
 procesar_texto("contar", texto)
-procesar_texto("reemplazar", texto, "de", "lechuza")
-procesar_texto ("eliminar", texto, "flauta")
+procesar_texto ("eliminar", "flauta", texto)
+procesar_texto("reemplazar", "de", "lechuza", texto)
 
 #38. Programa que pide la hora al usuario y dice que momento del dia es
 
@@ -684,6 +722,10 @@ def tienda_online():
     valor_cupon = float(input("Ingrese el valor del cupon"))
     if valor_cupon <= 0:
       print (f'El cupon no es valido. Prueba otra vez')
+
+    elif valor_cupon > precio_articulo:
+      print(f"El cupón no puede ser mayor que el precio del producto.")
+                
     else:
       precio_final = precio_articulo - valor_cupon
       print( f'El precio final a pagar es {precio_final} euros')
@@ -692,3 +734,6 @@ def tienda_online():
   else:
     print("La respuesta no es valida. Prueba otra vez")
 
+
+
+tienda_online()
